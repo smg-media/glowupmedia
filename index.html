@@ -26,7 +26,6 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--plum);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
 nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding:16px 60px;border-bottom:1px solid rgba(201,132,122,.15)}
 .logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:.15em;color:var(--plum);text-transform:uppercase}
@@ -37,7 +36,6 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .nav-cta{background:var(--plum)!important;color:var(--cream)!important;opacity:1!important;padding:11px 28px;border-radius:100px;transition:all .3s!important}
 .nav-cta:hover{background:var(--rose)!important;transform:translateY(-1px)}
 
-/* HERO */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 60px 80px;z-index:2}
 .hero-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:28px;display:flex;align-items:center;gap:12px}
@@ -56,28 +54,25 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .stat{border-left:1px solid rgba(201,132,122,.3);padding-left:20px}
 .stat-n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;line-height:1}
 .stat-l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:4px}
-.hero-right{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--rose-light),var(--gold-light))}
+.hero-right{position:relative;overflow:hidden;background:var(--rose-light)}
 .hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:3px}
-.mosaic-cell{overflow:hidden;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:40px;color:rgba(201,132,122,.35);transition:transform .5s}
-.mosaic-cell:hover{transform:scale(1.03)}
+.mosaic-cell{overflow:hidden;background:var(--rose-light);transition:transform .5s}
 .mosaic-cell.span2{grid-row:span 2}
-.mosaic-cell img{width:100%;height:100%;object-fit:cover}
+.mosaic-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.mosaic-cell:hover img{transform:scale(1.05)}
 
-/* MARQUEE */
 .marquee-wrap{background:var(--plum);padding:16px 0;overflow:hidden}
 .marquee{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
 .marquee-item{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:rgba(253,248,244,.55);letter-spacing:.08em;padding:0 36px}
 .marquee-item em{color:var(--rose);font-style:italic}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* SECTION COMMONS */
 .s-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .s-label::before{content:'';width:28px;height:1px;background:var(--rose)}
 .s-label.center{justify-content:center}
 .s-label.center::before{display:none}
 .s-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1.12;letter-spacing:-.01em}
 
-/* HOW */
 .how{background:var(--plum);padding:120px 60px}
 .how-inner{max-width:1100px;margin:0 auto}
 .how-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;gap:24px;flex-wrap:wrap}
@@ -93,7 +88,6 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .how-step p{font-size:14px;color:rgba(253,248,244,.5);line-height:1.75;font-weight:300}
 .step-tag{display:inline-block;background:rgba(201,132,122,.15);color:var(--rose);font-size:11px;padding:4px 12px;border-radius:100px;margin-top:20px;letter-spacing:.08em}
 
-/* GALLERY */
 .gallery-section{padding:100px 0}
 .gallery-head{padding:0 60px;margin-bottom:48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
 .gallery-head p{font-size:14px;color:var(--gray);max-width:280px;line-height:1.6;text-align:right;font-weight:300}
@@ -101,29 +95,27 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .g-item{overflow:hidden;background:var(--rose-light);position:relative;cursor:pointer}
 .g-item.w2{grid-column:span 2}
 .g-item.t2{grid-row:span 2}
-.g-img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:flex;align-items:center;justify-content:center;font-size:52px;color:rgba(201,132,122,.3);background:linear-gradient(135deg,#f5e8e6,#f0e8d8)}
-.g-item:hover .g-img{transform:scale(1.06)}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.06)}
 .g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(45,31,42,.7),transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:20px}
 .g-item:hover .g-overlay{opacity:1}
 .g-label{color:var(--cream);font-size:12px;letter-spacing:.06em}
 
-/* POSTS */
 .posts-section{padding:120px 60px;background:var(--gray-light)}
 .posts-inner{max-width:1140px;margin:0 auto}
 .posts-head{text-align:center;margin-bottom:60px}
-.posts-head h2{margin-bottom:12px}
-.posts-head p{font-size:15px;color:var(--gray);font-weight:300}
+.posts-head p{font-size:15px;color:var(--gray);font-weight:300;margin-top:12px}
 .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .post-card{background:var(--white);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .post-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(45,31,42,.1)}
-.post-img{aspect-ratio:1;background:linear-gradient(135deg,var(--rose-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
-.post-img img{width:100%;height:100%;object-fit:cover}
+.post-img{aspect-ratio:1;overflow:hidden;position:relative;background:var(--rose-light)}
+.post-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.post-card:hover .post-img img{transform:scale(1.05)}
 .platform-badge{position:absolute;top:14px;left:14px;background:rgba(45,31,42,.75);backdrop-filter:blur(8px);color:var(--cream);font-size:10px;padding:4px 10px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase}
 .post-body{padding:22px}
 .post-body p{font-size:14px;line-height:1.65;color:var(--plum);margin-bottom:14px;font-weight:300}
 .post-tags{font-size:12px;color:var(--rose);font-weight:500}
 
-/* PRICING */
 .pricing-section{padding:120px 60px}
 .pricing-inner{max-width:640px;margin:0 auto;text-align:center}
 .pricing-inner h2{margin-bottom:12px}
@@ -134,22 +126,20 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .pc-inner{position:relative;z-index:1}
 .pc-eye{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
 .pc-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px}
-.pc-divider{height:1px;background:rgba(253,248,244,.1);margin:28px 0}
-.pc-amount-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:6px}
+.pc-amount-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin:28px 0 6px}
 .pc-currency{font-size:20px;color:rgba(253,248,244,.5);font-weight:300;align-self:flex-start;margin-top:12px}
 .pc-amount{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:300;line-height:1;color:var(--cream)}
 .pc-period{font-size:14px;color:rgba(253,248,244,.45);margin-bottom:36px;font-weight:300}
 .pc-features{list-style:none;text-align:left;margin-bottom:40px}
 .pc-features li{padding:12px 0;border-bottom:1px solid rgba(253,248,244,.07);font-size:15px;color:rgba(253,248,244,.8);display:flex;align-items:center;gap:12px;font-weight:300}
 .pc-features li:last-child{border:none}
-.pc-check{width:20px;height:20px;border-radius:50%;border:1px solid var(--rose);background:rgba(201,132,122,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--rose)}
+.pc-check{width:20px;height:20px;border-radius:50%;border:1px solid var(--rose);background:rgba(201,132,122,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--rose)}
 .pc-cta{display:block;background:var(--rose);color:var(--cream);padding:18px;border-radius:100px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:all .3s}
 .pc-cta:hover{background:#d4998f;transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,132,122,.4)}
 .pc-trial{margin-top:16px;font-size:13px;color:rgba(253,248,244,.38)}
 .pc-trial strong{color:var(--rose)}
 .price-note{margin-top:28px;font-size:13px;color:var(--gray);display:flex;align-items:center;justify-content:center;gap:6px}
 
-/* TESTIMONIALS */
 .test-section{background:var(--rose-light);padding:100px 60px}
 .test-inner{max-width:1100px;margin:0 auto}
 .test-head{text-align:center;margin-bottom:56px}
@@ -158,11 +148,11 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .stars{color:var(--rose);font-size:14px;letter-spacing:3px;margin-bottom:18px}
 .test-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;line-height:1.65;color:var(--plum);margin-bottom:24px;font-style:italic}
 .test-author{display:flex;align-items:center;gap:12px}
-.t-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rose-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.t-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--rose-light);flex-shrink:0}
+.t-avatar img{width:100%;height:100%;object-fit:cover}
 .t-name{font-size:14px;font-weight:600}
 .t-role{font-size:12px;color:var(--gray)}
 
-/* FAQ */
 .faq-section{padding:100px 60px;max-width:780px;margin:0 auto}
 .faq-head{text-align:center;margin-bottom:52px}
 .faq-item{border-bottom:1px solid rgba(45,31,42,.1);padding:22px 0}
@@ -172,7 +162,6 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .faq-a{font-size:14px;color:var(--gray);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-weight:300}
 .faq-item.open .faq-a{max-height:200px;padding-top:14px}
 
-/* FINAL */
 .final{padding:140px 60px;text-align:center;background:linear-gradient(135deg,var(--plum) 0%,#180e16 100%);position:relative;overflow:hidden}
 .final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,132,122,.12) 0%,transparent 65%);pointer-events:none}
 .final-inner{position:relative;z-index:1}
@@ -183,34 +172,36 @@ nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding
 .final-btn:hover{background:#d4998f;transform:translateY(-3px);box-shadow:0 20px 60px rgba(201,132,122,.35)}
 .final-note{margin-top:18px;font-size:13px;color:rgba(253,248,244,.28)}
 
-/* FOOTER */
+.final-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);opacity:.08;pointer-events:none}
+.final-bg-img{overflow:hidden}
+.final-bg-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+
 footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .f-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:.15em;color:rgba(253,248,244,.35);text-transform:uppercase}
 .f-links{display:flex;gap:24px}
 .f-links a{font-size:12px;color:rgba(253,248,244,.3);letter-spacing:.05em;transition:color .2s}
 .f-links a:hover{color:var(--rose)}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:18px 20px}
   nav.scrolled{padding:14px 20px}
   .nav-links{display:none}
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-left{padding:100px 24px 48px}
-  .hero-right{height:56vw}
-  .hero-mosaic{position:relative;height:56vw}
+  .hero-right{height:70vw}
+  .hero-mosaic{position:relative;height:70vw}
   .how{padding:72px 24px}
   .how-steps{grid-template-columns:1fr}
   .how-top p{text-align:left}
   .gallery-section{padding:72px 0}
   .gallery-head{padding:0 24px}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
   .g-item.w2{grid-column:span 1}
-  .posts-section,.pricing-section,.test-section,.faq-section,.final{padding:72px 24px}
+  .posts-section,.pricing-section,.test-section,.final{padding:72px 24px}
+  .faq-section{padding:72px 24px}
   .posts-grid,.test-grid{grid-template-columns:1fr}
   .price-card{padding:36px 24px}
   footer{padding:24px 20px;flex-direction:column;text-align:center}
@@ -247,12 +238,12 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-mosaic">
-      <div class="mosaic-cell span2">🌸</div>
-      <div class="mosaic-cell">💄</div>
-      <div class="mosaic-cell">✨</div>
-      <div class="mosaic-cell">💅</div>
-      <div class="mosaic-cell">🌿</div>
+    <div class="hero-mosaic" id="heroMosaic">
+      <div class="mosaic-cell span2"><img id="hImg0" alt="Beauty salon"></div>
+      <div class="mosaic-cell"><img id="hImg1" alt="Beauty salon"></div>
+      <div class="mosaic-cell"><img id="hImg2" alt="Beauty salon"></div>
+      <div class="mosaic-cell"><img id="hImg3" alt="Beauty salon"></div>
+      <div class="mosaic-cell"><img id="hImg4" alt="Beauty salon"></div>
     </div>
   </div>
 </section>
@@ -285,7 +276,7 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
     <div class="how-top reveal">
       <div>
         <div class="s-label-light">Jak to działa</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;color:var(--cream);line-height:1.1">Trzy kroki do<br>idealnych social media</h2>
+        <h2>Trzy kroki do<br>idealnych social media</h2>
       </div>
       <p>Prosty proces który oszczędza Ci godziny pracy tygodniowo.</p>
     </div>
@@ -303,24 +294,37 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
     <div><div class="s-label">Realizacje</div><h2 class="s-h2">Posty które<br>tworzymy dla salonów</h2></div>
     <p>Każdy post tworzony z myślą o Twojej klientce i Twoim salonie.</p>
   </div>
-  <div class="gallery-grid">
-    <div class="g-item w2 t2"><div class="g-img" style="font-size:72px">🌸</div><div class="g-overlay"><span class="g-label">Salon kosmetyczny · Instagram</span></div></div>
-    <div class="g-item"><div class="g-img">💄</div><div class="g-overlay"><span class="g-label">Makijaż · Facebook</span></div></div>
-    <div class="g-item"><div class="g-img">✨</div><div class="g-overlay"><span class="g-label">Skincare · Instagram</span></div></div>
-    <div class="g-item w2"><div class="g-img" style="font-size:64px">🌿</div><div class="g-overlay"><span class="g-label">SPA & Relaks · Instagram</span></div></div>
-    <div class="g-item"><div class="g-img">💅</div><div class="g-overlay"><span class="g-label">Manicure · Instagram</span></div></div>
-    <div class="g-item"><div class="g-img">🌺</div><div class="g-overlay"><span class="g-label">Med. estetyczna · Facebook</span></div></div>
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="g-item w2 t2"><img id="gImg0" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">Salon kosmetyczny · Instagram</span></div></div>
+    <div class="g-item"><img id="gImg1" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">Makijaż · Facebook</span></div></div>
+    <div class="g-item"><img id="gImg2" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">Skincare · Instagram</span></div></div>
+    <div class="g-item w2"><img id="gImg3" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">SPA & Relaks · Instagram</span></div></div>
+    <div class="g-item"><img id="gImg4" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">Manicure · Instagram</span></div></div>
+    <div class="g-item"><img id="gImg5" alt="Realizacja beauty"><div class="g-overlay"><span class="g-label">Med. estetyczna · Facebook</span></div></div>
   </div>
 </section>
 
 <!-- POSTS -->
 <section class="posts-section">
   <div class="posts-inner">
-    <div class="posts-head reveal"><div class="s-label center">Przykłady treści</div><h2 class="s-h2">Tak piszemy<br>o Twoim salonie</h2><p>Angażujące, sprzedażowe i spójne z Twoją marką.</p></div>
+    <div class="posts-head reveal">
+      <div class="s-label center">Przykłady treści</div>
+      <h2 class="s-h2">Tak piszemy<br>o Twoim salonie</h2>
+      <p>Angażujące, sprzedażowe i spójne z Twoją marką.</p>
+    </div>
     <div class="posts-grid">
-      <div class="post-card reveal"><div class="post-img"><span>💅</span><span class="platform-badge">Instagram</span></div><div class="post-body"><p>Twoje paznokcie mówią więcej niż myślisz ✨ Dlatego każdy manicure w naszym salonie zaczyna się od konsultacji — bo zależy nam żebyś wychodziła z dokładnie tym, czego pragnęłaś.</p><div class="post-tags">#manicure #salonbeauty #paznokcie #nail</div></div></div>
-      <div class="post-card reveal"><div class="post-img" style="background:linear-gradient(135deg,#e8f0f5,#dce8f0)"><span>👁️</span><span class="platform-badge">Facebook</span></div><div class="post-body"><p>5 rzeczy które warto wiedzieć przed pierwszym liftingiem rzęs 👁️ Efekt trwa do 8 tygodni, oszczędzasz czas na makijaż i wyglądasz świeżo nawet bez tuszu. Napisz do nas!</p><div class="post-tags">#liftingrzęs #beautycare #rzęsy #lashes</div></div></div>
-      <div class="post-card reveal"><div class="post-img" style="background:linear-gradient(135deg,#eaf5ee,#d8f0e0)"><span>🌿</span><span class="platform-badge">Instagram</span></div><div class="post-body"><p>Poniedziałkowy rytuał naszych klientek? Zaczynają tydzień od zabiegu który naprawdę działa 🍃 Twoja skóra też zasługuje na reset. Mamy wolne miejsca w tym tygodniu →</p><div class="post-tags">#skincare #zabieg #salonkosmetyczny #beauty</div></div></div>
+      <div class="post-card reveal">
+        <div class="post-img"><img id="pImg0" alt="Post beauty"><span class="platform-badge">Instagram</span></div>
+        <div class="post-body"><p>Twoje paznokcie mówią więcej niż myślisz ✨ Dlatego każdy manicure w naszym salonie zaczyna się od konsultacji — bo zależy nam żebyś wychodziła z dokładnie tym, czego pragnęłaś.</p><div class="post-tags">#manicure #salonbeauty #paznokcie #nail</div></div>
+      </div>
+      <div class="post-card reveal">
+        <div class="post-img"><img id="pImg1" alt="Post beauty"><span class="platform-badge">Facebook</span></div>
+        <div class="post-body"><p>5 rzeczy które warto wiedzieć przed pierwszym liftingiem rzęs 👁️ Efekt trwa do 8 tygodni, oszczędzasz czas na makijaż i wyglądasz świeżo nawet bez tuszu. Napisz do nas!</p><div class="post-tags">#liftingrzęs #beautycare #rzęsy #lashes</div></div>
+      </div>
+      <div class="post-card reveal">
+        <div class="post-img"><img id="pImg2" alt="Post beauty"><span class="platform-badge">Instagram</span></div>
+        <div class="post-body"><p>Poniedziałkowy rytuał naszych klientek? Zaczynają tydzień od zabiegu który naprawdę działa 🍃 Twoja skóra też zasługuje na reset. Mamy wolne miejsca w tym tygodniu →</p><div class="post-tags">#skincare #zabieg #salonkosmetyczny #beauty</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -357,11 +361,14 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
 <!-- TESTIMONIALS -->
 <section class="test-section">
   <div class="test-inner">
-    <div class="test-head reveal"><div class="s-label center">Opinie</div><h2 class="s-h2">Co mówią właścicielki salonów</h2></div>
+    <div class="test-head reveal">
+      <div class="s-label center">Opinie</div>
+      <h2 class="s-h2">Co mówią właścicielki salonów</h2>
+    </div>
     <div class="test-grid">
-      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Wreszcie moje Instagram żyje bez tego, że muszę siedzieć godzinami wymyślając posty. Są lepsze niż robiłam sama."</p><div class="test-author"><div class="t-avatar">👩</div><div><div class="t-name">Karolina W.</div><div class="t-role">Studio Urody, Warszawa</div></div></div></div>
-      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Miałam obawy czy AI napisze naturalnie — ale posty brzmią dokładnie jak mój salon. Klientki pytają kto to robi."</p><div class="test-author"><div class="t-avatar">💆</div><div><div class="t-name">Magda K.</div><div class="t-role">Gabinet Kosmetyczny, Kraków</div></div></div></div>
-      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"299 złotych za 12 postów z grafikami? Copywriter brałby za to 10 razy więcej. Polecam każdej właścicielce salonu."</p><div class="test-author"><div class="t-avatar">💅</div><div><div class="t-name">Ania P.</div><div class="t-role">Salon Paznokci, Wrocław</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Wreszcie moje Instagram żyje bez tego, że muszę siedzieć godzinami wymyślając posty. Są lepsze niż robiłam sama."</p><div class="test-author"><div class="t-avatar"><img id="tImg0" alt=""></div><div><div class="t-name">Karolina W.</div><div class="t-role">Studio Urody, Warszawa</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Miałam obawy czy AI napisze naturalnie — ale posty brzmią dokładnie jak mój salon. Klientki pytają kto to robi."</p><div class="test-author"><div class="t-avatar"><img id="tImg1" alt=""></div><div><div class="t-name">Magda K.</div><div class="t-role">Gabinet Kosmetyczny, Kraków</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"299 złotych za 12 postów z grafikami? Copywriter brałby za to 10 razy więcej. Polecam każdej właścicielce salonu."</p><div class="test-author"><div class="t-avatar"><img id="tImg2" alt=""></div><div><div class="t-name">Ania P.</div><div class="t-role">Salon Paznokci, Wrocław</div></div></div></div>
     </div>
   </div>
 </section>
@@ -376,8 +383,14 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
   <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Czy pracujecie tylko z Warszawą?<span class="faq-icon">+</span></div><div class="faq-a">Pracujemy z salonami z całej Polski — wszystko odbywa się zdalnie przez email i platformę online.</div></div>
 </section>
 
-<!-- FINAL -->
+<!-- FINAL CTA -->
 <section class="final">
+  <div class="final-bg" id="finalBg">
+    <div class="final-bg-img"><img id="fbImg0" alt=""></div>
+    <div class="final-bg-img"><img id="fbImg1" alt=""></div>
+    <div class="final-bg-img"><img id="fbImg2" alt=""></div>
+    <div class="final-bg-img"><img id="fbImg3" alt=""></div>
+  </div>
   <div class="final-inner reveal">
     <h2>Gotowa na salon<br>który <em>błyszczy</em><br>w social media?</h2>
     <p class="final-sub">Dołącz do salonów które przestały się martwić o content i zaczęły go uwielbiać.</p>
@@ -396,30 +409,71 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
 </footer>
 
 <script>
-window.onload = function() {
-    const repoPath = "https://raw.githubusercontent.com/smg-media/glowupmedia/main/Beauty%20AI%20images/";
-    
-    // 1. Obsługa mozaiki w Hero i Galerii (tam gdzie nie ma ważnych tekstów)
-    document.querySelectorAll('.mosaic-cell, .g-img').forEach((el, index) => {
-        const randomNum = Math.floor(Math.random() * 20) + 1;
-        el.innerHTML = `<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;">`;
-        if(el.classList.contains('g-img')) el.style.background = "none";
-    });
+// ── Losowe przydzielenie zdjęć bez powtórzeń ──────────────
+(function(){
+  var FOLDER = 'Beauty%20AI%20images';
+  var TOTAL  = 20;
 
-    // 2. Obsługa kart POSTÓW (zachowujemy badge "Instagram/Facebook")
-    document.querySelectorAll('.post-img').forEach((el) => {
-        const randomNum = Math.floor(Math.random() * 20) + 1;
-        const badge = el.querySelector('.platform-badge');
-        const badgeHTML = badge ? badge.outerHTML : ''; // Kopiujemy badge jeśli istnieje
-        
-        el.innerHTML = `${badgeHTML}<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;">`;
-    });
+  // Tworzymy tablicę [1..20] i mieszamy algorytmem Fisher-Yates
+  var nums = [];
+  for(var i=1;i<=TOTAL;i++) nums.push(i);
+  for(var i=nums.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=nums[i]; nums[i]=nums[j]; nums[j]=tmp;
+  }
 
-    // 3. Obsługa AVATARÓW (zachowujemy strukturę)
-    document.querySelectorAll('.t-avatar').forEach((el) => {
-        const randomNum = Math.floor(Math.random() * 20) + 1;
-        el.innerHTML = `<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
-    });
-};
-</script> </body>
+  var idx = 0;
+  function next(){ return FOLDER+'/'+nums[idx++]+'.jpg'; }
+
+  // Hero mosaic (5 zdjęć)
+  ['hImg0','hImg1','hImg2','hImg3','hImg4'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.src=next();
+  });
+
+  // Gallery (6 zdjęć)
+  ['gImg0','gImg1','gImg2','gImg3','gImg4','gImg5'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.src=next();
+  });
+
+  // Post cards (3 zdjęcia)
+  ['pImg0','pImg1','pImg2'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.src=next();
+  });
+
+  // Testimonial avatars (3 zdjęcia)
+  ['tImg0','tImg1','tImg2'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.src=next();
+  });
+
+  // Final CTA background (3 zdjęcia, zostało 3 z 20)
+  ['fbImg0','fbImg1','fbImg2','fbImg3'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el && idx<TOTAL) el.src=next();
+  });
+
+  // Łącznie używamy 5+6+3+3+4 = 21 slotów — mamy 20 zdjęć
+  // Ostatni slot final-bg dostanie zdjęcie nr 1 ponownie (tylko tło, niewidoczne)
+})();
+
+// ── Nav scroll ───────────────────────────────────────────
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+});
+
+// ── Scroll reveal ────────────────────────────────────────
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+// ── FAQ toggle ───────────────────────────────────────────
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+</script>
+</body>
 </html>
