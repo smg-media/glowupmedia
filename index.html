@@ -4,323 +4,420 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GlowUp Media — AI Content dla Salonów Beauty</title>
-<meta name="description" content="12 profesjonalnych postów miesięcznie na Instagram i Facebook Twojego salonu. Tekst + grafika. Pierwsze 14 dni bezpłatnie.">
+<meta name="description" content="Profesjonalne posty na Instagram i Facebook dla Twojego salonu beauty. AI + human touch. 14 dni bezpłatnie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --pink:#c084a0;
-    --pink-light:#f9eef4;
-    --pink-dark:#9d6080;
-    --dark:#1a1a2e;
-    --gray:#6b7280;
-    --light:#fdfbfc;
-  }
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark);background:var(--light);line-height:1.6}
-  a{text-decoration:none;color:inherit}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fdf8f4;
+  --rose:#c9847a;
+  --rose-light:#f5e8e6;
+  --rose-dark:#9d5f58;
+  --plum:#2d1f2a;
+  --gold:#c4a882;
+  --gold-light:#f0e8d8;
+  --white:#ffffff;
+  --gray:#8a8a8a;
+  --gray-light:#f5f5f3;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--plum);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
 
-  /* NAV */
-  nav{padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid #f3e8ef;position:sticky;top:0;z-index:100}
-  .logo{font-size:22px;font-weight:700;color:var(--pink-dark);letter-spacing:-.5px}
-  .logo span{color:var(--dark)}
-  .nav-cta{background:var(--pink);color:#fff;padding:9px 22px;border-radius:100px;font-size:14px;font-weight:600;transition:background .2s}
-  .nav-cta:hover{background:var(--pink-dark)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(253,248,244,.94);backdrop-filter:blur(20px);padding:16px 60px;border-bottom:1px solid rgba(201,132,122,.15)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:.15em;color:var(--plum);text-transform:uppercase}
+.logo em{color:var(--rose);font-style:normal}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.1em;color:var(--plum);opacity:.6;transition:opacity .2s;text-transform:uppercase;font-weight:500}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--plum)!important;color:var(--cream)!important;opacity:1!important;padding:11px 28px;border-radius:100px;transition:all .3s!important}
+.nav-cta:hover{background:var(--rose)!important;transform:translateY(-1px)}
 
-  /* HERO */
-  .hero{padding:80px 40px 60px;text-align:center;max-width:760px;margin:0 auto}
-  .hero-badge{display:inline-block;background:var(--pink-light);color:var(--pink-dark);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:24px;border:1px solid #f0d0e0}
-  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:20px;letter-spacing:-.5px}
-  .hero h1 em{color:var(--pink);font-style:normal}
-  .hero p{font-size:18px;color:var(--gray);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto}
-  .hero-cta{display:inline-block;background:var(--pink);color:#fff;padding:16px 40px;border-radius:100px;font-size:17px;font-weight:700;transition:all .2s;box-shadow:0 4px 20px rgba(192,132,160,.35)}
-  .hero-cta:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(192,132,160,.45)}
-  .hero-sub{margin-top:14px;font-size:13px;color:var(--gray)}
-  .hero-sub strong{color:var(--pink-dark)}
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 60px 80px;z-index:2}
+.hero-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--rose)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,86px);font-weight:300;line-height:1.05;letter-spacing:-.02em;margin-bottom:28px}
+.hero h1 em{color:var(--rose);font-style:italic}
+.hero-sub{font-size:16px;color:var(--gray);line-height:1.75;max-width:420px;margin-bottom:44px;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.btn-primary{background:var(--plum);color:var(--cream);padding:16px 40px;border-radius:100px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:all .3s;display:inline-block}
+.btn-primary:hover{background:var(--rose);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,132,122,.3)}
+.btn-ghost{font-size:13px;color:var(--plum);letter-spacing:.05em;display:flex;align-items:center;gap:8px;opacity:.6;transition:opacity .2s}
+.btn-ghost:hover{opacity:1}
+.btn-ghost span{transition:transform .2s}
+.btn-ghost:hover span{transform:translateX(4px)}
+.hero-stats{margin-top:60px;display:flex;gap:40px}
+.stat{border-left:1px solid rgba(201,132,122,.3);padding-left:20px}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;line-height:1}
+.stat-l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:4px}
+.hero-right{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--rose-light),var(--gold-light))}
+.hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:3px}
+.mosaic-cell{overflow:hidden;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:40px;color:rgba(201,132,122,.35);transition:transform .5s}
+.mosaic-cell:hover{transform:scale(1.03)}
+.mosaic-cell.span2{grid-row:span 2}
+.mosaic-cell img{width:100%;height:100%;object-fit:cover}
 
-  /* SOCIAL PROOF */
-  .proof{background:#fff;padding:28px 40px;text-align:center;border-top:1px solid #f3e8ef;border-bottom:1px solid #f3e8ef}
-  .proof p{font-size:13px;color:var(--gray);margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-  .proof-logos{display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap}
-  .proof-logo{font-size:15px;font-weight:700;color:#ccc;letter-spacing:-.3px}
+/* MARQUEE */
+.marquee-wrap{background:var(--plum);padding:16px 0;overflow:hidden}
+.marquee{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
+.marquee-item{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:rgba(253,248,244,.55);letter-spacing:.08em;padding:0 36px}
+.marquee-item em{color:var(--rose);font-style:italic}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  /* JAK TO DZIAŁA */
-  .section{padding:72px 40px;max-width:1000px;margin:0 auto}
-  .section-label{text-align:center;font-size:13px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
-  .section h2{text-align:center;font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:48px;letter-spacing:-.3px}
+/* SECTION COMMONS */
+.s-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'';width:28px;height:1px;background:var(--rose)}
+.s-label.center{justify-content:center}
+.s-label.center::before{display:none}
+.s-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1.12;letter-spacing:-.01em}
 
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-  .step{background:#fff;border:1px solid #f0e0ea;border-radius:16px;padding:28px 24px;text-align:center}
-  .step-num{width:44px;height:44px;background:var(--pink-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--pink-dark);margin:0 auto 16px}
-  .step h3{font-size:17px;font-weight:700;margin-bottom:8px}
-  .step p{font-size:14px;color:var(--gray);line-height:1.5}
+/* HOW */
+.how{background:var(--plum);padding:120px 60px}
+.how-inner{max-width:1100px;margin:0 auto}
+.how-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;gap:24px;flex-wrap:wrap}
+.s-label-light{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.s-label-light::before{content:'';width:28px;height:1px;background:var(--rose)}
+.how-top h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;color:var(--cream);line-height:1.1}
+.how-top p{font-size:14px;color:rgba(253,248,244,.4);max-width:280px;line-height:1.7;text-align:right;font-weight:300}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.how-step{background:rgba(255,255,255,.04);padding:48px 36px;transition:background .3s;cursor:default}
+.how-step:hover{background:rgba(201,132,122,.1)}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(201,132,122,.18);line-height:1;margin-bottom:24px}
+.how-step h3{font-size:18px;font-weight:500;margin-bottom:12px;color:var(--cream)}
+.how-step p{font-size:14px;color:rgba(253,248,244,.5);line-height:1.75;font-weight:300}
+.step-tag{display:inline-block;background:rgba(201,132,122,.15);color:var(--rose);font-size:11px;padding:4px 12px;border-radius:100px;margin-top:20px;letter-spacing:.08em}
 
-  /* CO DOSTAJESZ */
-  .features{background:var(--pink-light);padding:72px 40px}
-  .features-inner{max-width:1000px;margin:0 auto}
-  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px}
-  .feature{background:#fff;border-radius:14px;padding:24px;display:flex;gap:14px;align-items:flex-start;border:1px solid #f0dde8}
-  .feature-icon{width:40px;height:40px;background:var(--pink-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:1px solid #f0dde8}
-  .feature h3{font-size:15px;font-weight:700;margin-bottom:4px}
-  .feature p{font-size:13px;color:var(--gray);line-height:1.5}
+/* GALLERY */
+.gallery-section{padding:100px 0}
+.gallery-head{padding:0 60px;margin-bottom:48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+.gallery-head p{font-size:14px;color:var(--gray);max-width:280px;line-height:1.6;text-align:right;font-weight:300}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:3px}
+.g-item{overflow:hidden;background:var(--rose-light);position:relative;cursor:pointer}
+.g-item.w2{grid-column:span 2}
+.g-item.t2{grid-row:span 2}
+.g-img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:flex;align-items:center;justify-content:center;font-size:52px;color:rgba(201,132,122,.3);background:linear-gradient(135deg,#f5e8e6,#f0e8d8)}
+.g-item:hover .g-img{transform:scale(1.06)}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(45,31,42,.7),transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:20px}
+.g-item:hover .g-overlay{opacity:1}
+.g-label{color:var(--cream);font-size:12px;letter-spacing:.06em}
 
-  /* PRZYKŁADOWE POSTY */
-  .posts-section{padding:72px 40px;max-width:1000px;margin:0 auto}
-  .posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
-  .post-card{background:#fff;border:1px solid #f0e0ea;border-radius:16px;overflow:hidden}
-  .post-img{background:linear-gradient(135deg,#f9eef4,#fce4f0);height:200px;display:flex;align-items:center;justify-content:center;font-size:40px;border-bottom:1px solid #f0e0ea}
-  .post-body{padding:18px}
-  .post-platform{font-size:11px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
-  .post-text{font-size:13px;color:var(--dark);line-height:1.6;margin-bottom:12px}
-  .post-tags{font-size:12px;color:var(--pink-dark);font-weight:500}
+/* POSTS */
+.posts-section{padding:120px 60px;background:var(--gray-light)}
+.posts-inner{max-width:1140px;margin:0 auto}
+.posts-head{text-align:center;margin-bottom:60px}
+.posts-head h2{margin-bottom:12px}
+.posts-head p{font-size:15px;color:var(--gray);font-weight:300}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.post-card{background:var(--white);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.post-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(45,31,42,.1)}
+.post-img{aspect-ratio:1;background:linear-gradient(135deg,var(--rose-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.post-img img{width:100%;height:100%;object-fit:cover}
+.platform-badge{position:absolute;top:14px;left:14px;background:rgba(45,31,42,.75);backdrop-filter:blur(8px);color:var(--cream);font-size:10px;padding:4px 10px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase}
+.post-body{padding:22px}
+.post-body p{font-size:14px;line-height:1.65;color:var(--plum);margin-bottom:14px;font-weight:300}
+.post-tags{font-size:12px;color:var(--rose);font-weight:500}
 
-  /* CENNIK */
-  .pricing{background:#fff;padding:72px 40px}
-  .pricing-inner{max-width:520px;margin:0 auto;text-align:center}
-  .price-card{background:var(--pink-light);border:2px solid var(--pink);border-radius:20px;padding:40px 36px;margin-top:40px}
-  .price-badge{background:var(--pink);color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:20px;letter-spacing:.05em}
-  .price-name{font-size:24px;font-weight:800;margin-bottom:6px}
-  .price-amount{font-size:52px;font-weight:900;color:var(--pink-dark);line-height:1;margin:16px 0 4px}
-  .price-amount span{font-size:20px;font-weight:600;color:var(--gray);vertical-align:super;font-size:18px}
-  .price-period{font-size:14px;color:var(--gray);margin-bottom:28px}
-  .price-features{list-style:none;text-align:left;margin-bottom:32px}
-  .price-features li{padding:9px 0;border-bottom:1px solid #f0dde8;font-size:15px;display:flex;align-items:center;gap:10px}
-  .price-features li:last-child{border:none}
-  .price-features li::before{content:'✓';color:var(--pink);font-weight:800;flex-shrink:0}
-  .price-cta{display:block;background:var(--pink);color:#fff;padding:16px;border-radius:100px;font-size:17px;font-weight:700;transition:all .2s;box-shadow:0 4px 20px rgba(192,132,160,.3)}
-  .price-cta:hover{background:var(--pink-dark);transform:translateY(-2px)}
-  .price-trial{margin-top:14px;font-size:13px;color:var(--gray)}
-  .price-trial strong{color:var(--pink-dark)}
+/* PRICING */
+.pricing-section{padding:120px 60px}
+.pricing-inner{max-width:640px;margin:0 auto;text-align:center}
+.pricing-inner h2{margin-bottom:12px}
+.pricing-intro{font-size:15px;color:var(--gray);margin-bottom:52px;font-weight:300}
+.price-card{background:var(--plum);border-radius:28px;padding:56px 52px;position:relative;overflow:hidden;color:var(--cream)}
+.price-card::before{content:'';position:absolute;top:-80px;right:-80px;width:250px;height:250px;background:rgba(201,132,122,.12);border-radius:50%}
+.price-card::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;background:rgba(196,168,130,.08);border-radius:50%}
+.pc-inner{position:relative;z-index:1}
+.pc-eye{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px}
+.pc-divider{height:1px;background:rgba(253,248,244,.1);margin:28px 0}
+.pc-amount-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:6px}
+.pc-currency{font-size:20px;color:rgba(253,248,244,.5);font-weight:300;align-self:flex-start;margin-top:12px}
+.pc-amount{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:300;line-height:1;color:var(--cream)}
+.pc-period{font-size:14px;color:rgba(253,248,244,.45);margin-bottom:36px;font-weight:300}
+.pc-features{list-style:none;text-align:left;margin-bottom:40px}
+.pc-features li{padding:12px 0;border-bottom:1px solid rgba(253,248,244,.07);font-size:15px;color:rgba(253,248,244,.8);display:flex;align-items:center;gap:12px;font-weight:300}
+.pc-features li:last-child{border:none}
+.pc-check{width:20px;height:20px;border-radius:50%;border:1px solid var(--rose);background:rgba(201,132,122,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--rose)}
+.pc-cta{display:block;background:var(--rose);color:var(--cream);padding:18px;border-radius:100px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:all .3s}
+.pc-cta:hover{background:#d4998f;transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,132,122,.4)}
+.pc-trial{margin-top:16px;font-size:13px;color:rgba(253,248,244,.38)}
+.pc-trial strong{color:var(--rose)}
+.price-note{margin-top:28px;font-size:13px;color:var(--gray);display:flex;align-items:center;justify-content:center;gap:6px}
 
-  /* FAQ */
-  .faq{padding:72px 40px;max-width:680px;margin:0 auto}
-  .faq-item{border-bottom:1px solid #f0e0ea;padding:20px 0}
-  .faq-q{font-size:16px;font-weight:700;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-  .faq-q::after{content:'+';color:var(--pink);font-size:20px;font-weight:400}
-  .faq-a{font-size:14px;color:var(--gray);line-height:1.7}
+/* TESTIMONIALS */
+.test-section{background:var(--rose-light);padding:100px 60px}
+.test-inner{max-width:1100px;margin:0 auto}
+.test-head{text-align:center;margin-bottom:56px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.test-card{background:var(--white);border-radius:18px;padding:32px 28px}
+.stars{color:var(--rose);font-size:14px;letter-spacing:3px;margin-bottom:18px}
+.test-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;line-height:1.65;color:var(--plum);margin-bottom:24px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.t-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rose-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.t-name{font-size:14px;font-weight:600}
+.t-role{font-size:12px;color:var(--gray)}
 
-  /* FINAL CTA */
-  .final-cta{background:linear-gradient(135deg,#2d1f2e,#1a1a2e);padding:80px 40px;text-align:center;color:#fff}
-  .final-cta h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:16px;letter-spacing:-.3px}
-  .final-cta p{font-size:18px;color:#c9a0b8;margin-bottom:36px}
-  .final-cta a{display:inline-block;background:var(--pink);color:#fff;padding:16px 44px;border-radius:100px;font-size:17px;font-weight:700;transition:all .2s}
-  .final-cta a:hover{background:#d498b8;transform:translateY(-2px)}
-  .final-sub{margin-top:14px;font-size:13px;color:#9d7a8e}
+/* FAQ */
+.faq-section{padding:100px 60px;max-width:780px;margin:0 auto}
+.faq-head{text-align:center;margin-bottom:52px}
+.faq-item{border-bottom:1px solid rgba(45,31,42,.1);padding:22px 0}
+.faq-q{font-size:16px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(201,132,122,.4);color:var(--rose);font-size:18px;font-weight:300;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.faq-item.open .faq-icon{background:var(--rose);color:var(--cream);transform:rotate(45deg)}
+.faq-a{font-size:14px;color:var(--gray);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-weight:300}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px}
 
-  /* FOOTER */
-  footer{background:#1a1a2e;color:#666;padding:24px 40px;text-align:center;font-size:13px;border-top:1px solid #2a2a3e}
-  footer a{color:#9d7a8e;margin:0 8px}
+/* FINAL */
+.final{padding:140px 60px;text-align:center;background:linear-gradient(135deg,var(--plum) 0%,#180e16 100%);position:relative;overflow:hidden}
+.final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,132,122,.12) 0%,transparent 65%);pointer-events:none}
+.final-inner{position:relative;z-index:1}
+.final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,82px);font-weight:300;color:var(--cream);line-height:1.08;margin-bottom:22px;letter-spacing:-.02em}
+.final h2 em{color:var(--rose);font-style:italic}
+.final-sub{font-size:17px;color:rgba(253,248,244,.45);margin-bottom:48px;font-weight:300;max-width:480px;margin-left:auto;margin-right:auto}
+.final-btn{display:inline-block;background:var(--rose);color:var(--cream);padding:20px 56px;border-radius:100px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:all .3s}
+.final-btn:hover{background:#d4998f;transform:translateY(-3px);box-shadow:0 20px 60px rgba(201,132,122,.35)}
+.final-note{margin-top:18px;font-size:13px;color:rgba(253,248,244,.28)}
 
-  @media(max-width:600px){
-    nav{padding:14px 20px}
-    .hero{padding:48px 20px 40px}
-    .section,.faq,.posts-section{padding:48px 20px}
-    .features,.pricing{padding:48px 20px}
-    .final-cta{padding:60px 20px}
-    footer{padding:20px}
-    .price-amount{font-size:44px}
-  }
+/* FOOTER */
+footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:.15em;color:rgba(253,248,244,.35);text-transform:uppercase}
+.f-links{display:flex;gap:24px}
+.f-links a{font-size:12px;color:rgba(253,248,244,.3);letter-spacing:.05em;transition:color .2s}
+.f-links a:hover{color:var(--rose)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:18px 20px}
+  nav.scrolled{padding:14px 20px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:100px 24px 48px}
+  .hero-right{height:56vw}
+  .hero-mosaic{position:relative;height:56vw}
+  .how{padding:72px 24px}
+  .how-steps{grid-template-columns:1fr}
+  .how-top p{text-align:left}
+  .gallery-section{padding:72px 0}
+  .gallery-head{padding:0 24px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .g-item.w2{grid-column:span 1}
+  .posts-section,.pricing-section,.test-section,.faq-section,.final{padding:72px 24px}
+  .posts-grid,.test-grid{grid-template-columns:1fr}
+  .price-card{padding:36px 24px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">GlowUp<span>Media</span></div>
-  <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="nav-cta">Zacznij za darmo →</a>
+<nav id="nav">
+  <div class="logo">Glow<em>Up</em> Media</div>
+  <div class="nav-links">
+    <a href="#jak-to-dziala">Jak to działa</a>
+    <a href="#realizacje">Realizacje</a>
+    <a href="#cennik">Cennik</a>
+    <a href="mailto:kontakt@glowupmedia.pl">Kontakt</a>
+    <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="nav-cta">Zacznij bezpłatnie</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section style="background:linear-gradient(180deg,#fff9fc 0%,#fff 100%)">
-  <div class="hero">
-    <div class="hero-badge">✦ AI Content dla branży beauty</div>
-    <h1>12 gotowych postów<br>dla Twojego salonu<br><em>każdego miesiąca</em></h1>
-    <p>Tekst + grafika na Instagram i Facebook. Dopasowane do Twojego salonu. Ty tylko zatwierdzasz — resztą zajmuje się AI.</p>
-    <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="hero-cta">Zacznij 14 dni bezpłatnie →</a>
-    <p class="hero-sub">Bez umów. Anuluj kiedy chcesz. Potem tylko <strong>299 PLN / miesiąc</strong>.</p>
+<section class="hero">
+  <div class="hero-left reveal">
+    <div class="hero-eyebrow">AI Content Agency · Beauty</div>
+    <h1>Social media<br>Twojego salonu<br><em>bez wysiłku</em></h1>
+    <p class="hero-sub">12 profesjonalnych postów miesięcznie — tekst i grafika dopasowane do Twojego salonu. Ty zatwierdzasz. My resztą zajmujemy się sami.</p>
+    <div class="hero-actions">
+      <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="btn-primary">Zacznij 14 dni bezpłatnie</a>
+      <a href="#jak-to-dziala" class="btn-ghost">Jak to działa <span>→</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">12</div><div class="stat-l">Postów / miesiąc</div></div>
+      <div class="stat"><div class="stat-n">48h</div><div class="stat-l">Czas realizacji</div></div>
+      <div class="stat"><div class="stat-n">299</div><div class="stat-l">PLN / miesiąc</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="mosaic-cell span2">🌸</div>
+      <div class="mosaic-cell">💄</div>
+      <div class="mosaic-cell">✨</div>
+      <div class="mosaic-cell">💅</div>
+      <div class="mosaic-cell">🌿</div>
+    </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<div class="proof">
-  <p>Treści tworzone dla salonów z całej Polski</p>
-  <div class="proof-logos">
-    <span class="proof-logo">Medycyna estetyczna</span>
-    <span class="proof-logo">•</span>
-    <span class="proof-logo">Fryzjerstwo</span>
-    <span class="proof-logo">•</span>
-    <span class="proof-logo">Kosmetologia</span>
-    <span class="proof-logo">•</span>
-    <span class="proof-logo">Paznokcie & SPA</span>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="marquee-item">Instagram <em>·</em></span>
+    <span class="marquee-item">Facebook <em>·</em></span>
+    <span class="marquee-item">Treści dla <em>beauty</em> <em>·</em></span>
+    <span class="marquee-item">AI Content <em>·</em></span>
+    <span class="marquee-item">Grafiki & Copywriting <em>·</em></span>
+    <span class="marquee-item">Salony <em>beauty</em> <em>·</em></span>
+    <span class="marquee-item">Medycyna estetyczna <em>·</em></span>
+    <span class="marquee-item">Fryzjerstwo <em>·</em></span>
+    <span class="marquee-item">Instagram <em>·</em></span>
+    <span class="marquee-item">Facebook <em>·</em></span>
+    <span class="marquee-item">Treści dla <em>beauty</em> <em>·</em></span>
+    <span class="marquee-item">AI Content <em>·</em></span>
+    <span class="marquee-item">Grafiki & Copywriting <em>·</em></span>
+    <span class="marquee-item">Salony <em>beauty</em> <em>·</em></span>
+    <span class="marquee-item">Medycyna estetyczna <em>·</em></span>
+    <span class="marquee-item">Fryzjerstwo <em>·</em></span>
   </div>
 </div>
 
-<!-- JAK TO DZIAŁA -->
-<section class="section">
-  <div class="section-label">Jak to działa</div>
-  <h2>Trzy kroki do profesjonalnego social media</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Wypełniasz brief</h3>
-      <p>Opowiadasz nam o swoim salonie — usługi, styl, grupa docelowa. Zajmuje 5 minut.</p>
+<!-- HOW -->
+<section class="how" id="jak-to-dziala">
+  <div class="how-inner">
+    <div class="how-top reveal">
+      <div>
+        <div class="s-label-light">Jak to działa</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;color:var(--cream);line-height:1.1">Trzy kroki do<br>idealnych social media</h2>
+      </div>
+      <p>Prosty proces który oszczędza Ci godziny pracy tygodniowo.</p>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>AI tworzy posty</h3>
-      <p>Nasz system generuje 12 postów z grafikami, dopasowanych do Twojej marki i branży beauty.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Ty zatwierdzasz</h3>
-      <p>Przeglądasz posty, akceptujesz lub prosisz o zmiany. Gotowe posty trafiają na Twoje social media.</p>
+    <div class="how-steps">
+      <div class="how-step reveal"><div class="step-n">01</div><h3>Wypełniasz brief</h3><p>Opowiadasz nam o swoim salonie — usługi, styl, grupę docelową. Raz, na początku. Zajmuje 5 minut.</p><span class="step-tag">Jednorazowo</span></div>
+      <div class="how-step reveal"><div class="step-n">02</div><h3>AI tworzy posty</h3><p>Nasz system generuje 12 postów z profesjonalnymi grafikami, idealnie dopasowanymi do Twojej marki i branży beauty.</p><span class="step-tag">Co miesiąc</span></div>
+      <div class="how-step reveal"><div class="step-n">03</div><h3>Zatwierdzasz</h3><p>Przeglądasz gotowe posty i akceptujesz lub prosisz o zmiany. Nic nie trafia na Twoje profile bez Twojej zgody.</p><span class="step-tag">Tydzień przed startem</span></div>
     </div>
   </div>
 </section>
 
-<!-- CO DOSTAJESZ -->
-<section class="features">
-  <div class="features-inner">
-    <div class="section-label">Co dostajesz</div>
-    <h2>Wszystko czego potrzebuje Twój salon</h2>
-    <div class="features-grid">
-      <div class="feature">
-        <div class="feature-icon">✍️</div>
-        <div>
-          <h3>Profesjonalne teksty</h3>
-          <p>Każdy post napisany z myślą o Twoich klientkach — angażujący, sprzedażowy i spójny z Twoją marką.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🎨</div>
-        <div>
-          <h3>Grafiki do każdego posta</h3>
-          <p>Estetyczne grafiki w stylu beauty, gotowe do publikacji na Instagramie i Facebooku.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📅</div>
-        <div>
-          <h3>3 posty tygodniowo</h3>
-          <p>Regularność to klucz w social media. Dostajesz 12 postów miesięcznie — bez przerw i opóźnień.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">💬</div>
-        <div>
-          <h3>Dopasowane do salonu</h3>
-          <p>Nie szablony — każdy post odnosi się do Twoich usług, promocji i stylu komunikacji.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📊</div>
-        <div>
-          <h3>Raport co miesiąc</h3>
-          <p>Widzisz które posty działają najlepiej i co poprawiamy w kolejnym miesiącu.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div>
-          <h3>Zero Twojego czasu</h3>
-          <p>Ty prowadzisz salon — my prowadzimy Twoje social media. Dosłownie.</p>
-        </div>
-      </div>
-    </div>
+<!-- GALLERY -->
+<section class="gallery-section" id="realizacje">
+  <div class="gallery-head reveal">
+    <div><div class="s-label">Realizacje</div><h2 class="s-h2">Posty które<br>tworzymy dla salonów</h2></div>
+    <p>Każdy post tworzony z myślą o Twojej klientce i Twoim salonie.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item w2 t2"><div class="g-img" style="font-size:72px">🌸</div><div class="g-overlay"><span class="g-label">Salon kosmetyczny · Instagram</span></div></div>
+    <div class="g-item"><div class="g-img">💄</div><div class="g-overlay"><span class="g-label">Makijaż · Facebook</span></div></div>
+    <div class="g-item"><div class="g-img">✨</div><div class="g-overlay"><span class="g-label">Skincare · Instagram</span></div></div>
+    <div class="g-item w2"><div class="g-img" style="font-size:64px">🌿</div><div class="g-overlay"><span class="g-label">SPA & Relaks · Instagram</span></div></div>
+    <div class="g-item"><div class="g-img">💅</div><div class="g-overlay"><span class="g-label">Manicure · Instagram</span></div></div>
+    <div class="g-item"><div class="g-img">🌺</div><div class="g-overlay"><span class="g-label">Med. estetyczna · Facebook</span></div></div>
   </div>
 </section>
 
-<!-- PRZYKŁADOWE POSTY -->
+<!-- POSTS -->
 <section class="posts-section">
-  <div class="section-label">Przykłady</div>
-  <h2>Tak wyglądają posty które tworzymy</h2>
-  <div class="posts-grid">
-    <div class="post-card">
-      <div class="post-img">💅</div>
-      <div class="post-body">
-        <div class="post-platform">Instagram</div>
-        <div class="post-text">Twoje paznokcie mówią więcej niż myślisz ✨ Dlatego każdy manicure w naszym salonie zaczyna się od konsultacji — bo zależy nam żebyś wychodziła z dokładnie tym, czego pragnęłaś. Umów się już dziś →</div>
-        <div class="post-tags">#manicure #salonbeauty #paznokcie #warszawa</div>
-      </div>
-    </div>
-    <div class="post-card">
-      <div class="post-img">🌸</div>
-      <div class="post-body">
-        <div class="post-platform">Facebook</div>
-        <div class="post-text">5 rzeczy które warto wiedzieć przed pierwszym zabiegiem liftingu rzęs 👁️ Efekt trwa do 8 tygodni, oszczędzasz czas na poranny makijaż i wyglądasz świeżo nawet bez tuszu. Ciekawi Cię więcej? Napisz do nas!</div>
-        <div class="post-tags">#liftingrzęs #beautycare #rzęsy</div>
-      </div>
-    </div>
-    <div class="post-card">
-      <div class="post-img">💆</div>
-      <div class="post-body">
-        <div class="post-platform">Instagram</div>
-        <div class="post-text">Poniedziałkowy rytuał naszych klientek? Zaczynają tydzień od zabiegu który naprawdę działa 🍃 Twoja skóra też zasługuje na reset. Zarezerwuj termin — mamy wolne miejsca w tym tygodniu.</div>
-        <div class="post-tags">#zabiegnatwarz #skincare #salonkosmetyczny</div>
-      </div>
+  <div class="posts-inner">
+    <div class="posts-head reveal"><div class="s-label center">Przykłady treści</div><h2 class="s-h2">Tak piszemy<br>o Twoim salonie</h2><p>Angażujące, sprzedażowe i spójne z Twoją marką.</p></div>
+    <div class="posts-grid">
+      <div class="post-card reveal"><div class="post-img"><span>💅</span><span class="platform-badge">Instagram</span></div><div class="post-body"><p>Twoje paznokcie mówią więcej niż myślisz ✨ Dlatego każdy manicure w naszym salonie zaczyna się od konsultacji — bo zależy nam żebyś wychodziła z dokładnie tym, czego pragnęłaś.</p><div class="post-tags">#manicure #salonbeauty #paznokcie #nail</div></div></div>
+      <div class="post-card reveal"><div class="post-img" style="background:linear-gradient(135deg,#e8f0f5,#dce8f0)"><span>👁️</span><span class="platform-badge">Facebook</span></div><div class="post-body"><p>5 rzeczy które warto wiedzieć przed pierwszym liftingiem rzęs 👁️ Efekt trwa do 8 tygodni, oszczędzasz czas na makijaż i wyglądasz świeżo nawet bez tuszu. Napisz do nas!</p><div class="post-tags">#liftingrzęs #beautycare #rzęsy #lashes</div></div></div>
+      <div class="post-card reveal"><div class="post-img" style="background:linear-gradient(135deg,#eaf5ee,#d8f0e0)"><span>🌿</span><span class="platform-badge">Instagram</span></div><div class="post-body"><p>Poniedziałkowy rytuał naszych klientek? Zaczynają tydzień od zabiegu który naprawdę działa 🍃 Twoja skóra też zasługuje na reset. Mamy wolne miejsca w tym tygodniu →</p><div class="post-tags">#skincare #zabieg #salonkosmetyczny #beauty</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CENNIK -->
-<section class="pricing">
-  <div class="pricing-inner">
-    <div class="section-label">Cennik</div>
-    <h2>Prosty abonament.<br>Bez ukrytych kosztów.</h2>
+<!-- PRICING -->
+<section class="pricing-section" id="cennik">
+  <div class="pricing-inner reveal">
+    <div class="s-label center">Cennik</div>
+    <h2 class="s-h2">Jeden pakiet.<br>Wszystko w cenie.</h2>
+    <p class="pricing-intro">Prosty abonament bez ukrytych kosztów. Anuluj kiedy chcesz.</p>
     <div class="price-card">
-      <div class="price-badge">NAJPOPULARNIEJSZY</div>
-      <div class="price-name">Pakiet Starter</div>
-      <div class="price-amount"><span>PLN</span> 299</div>
-      <div class="price-period">miesięcznie · anuluj kiedy chcesz</div>
-      <ul class="price-features">
-        <li>12 postów miesięcznie (3 tygodniowo)</li>
-        <li>Tekst + grafika do każdego posta</li>
-        <li>Instagram i Facebook</li>
-        <li>Dopasowane do Twojego salonu</li>
-        <li>Raport wyników co miesiąc</li>
-        <li>Zmiany i korekty w cenie</li>
-      </ul>
-      <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="price-cta">Zacznij 14 dni bezpłatnie →</a>
-      <p class="price-trial">Pierwsze <strong>14 dni całkowicie bezpłatnie</strong>. Karta wymagana, ale nie pobieramy opłaty przez 2 tygodnie.</p>
+      <div class="pc-inner">
+        <div class="pc-eye">Pakiet Starter</div>
+        <div class="pc-name">Wszystko czego potrzebuje Twój salon</div>
+        <div style="height:1px;background:rgba(253,248,244,.1);margin:24px 0"></div>
+        <div class="pc-amount-row"><span class="pc-currency">PLN</span><span class="pc-amount">299</span></div>
+        <div class="pc-period">miesięcznie · bez umów · anuluj kiedy chcesz</div>
+        <ul class="pc-features">
+          <li><span class="pc-check">✓</span>12 postów miesięcznie (3 tygodniowo)</li>
+          <li><span class="pc-check">✓</span>Profesjonalny tekst + grafika do każdego posta</li>
+          <li><span class="pc-check">✓</span>Instagram i Facebook</li>
+          <li><span class="pc-check">✓</span>Strategia dopasowana do Twojego salonu</li>
+          <li><span class="pc-check">✓</span>Korekty i zmiany w cenie</li>
+          <li><span class="pc-check">✓</span>Raport wyników co miesiąc</li>
+        </ul>
+        <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="pc-cta">Zacznij 14 dni bezpłatnie →</a>
+        <p class="pc-trial">Pierwsze <strong>14 dni całkowicie bezpłatnie</strong>. Karta wymagana — nie pobieramy opłaty przez 2 tygodnie.</p>
+      </div>
+    </div>
+    <p class="price-note">🔒 Bez umów. Anuluj w dowolnym momencie.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test-section">
+  <div class="test-inner">
+    <div class="test-head reveal"><div class="s-label center">Opinie</div><h2 class="s-h2">Co mówią właścicielki salonów</h2></div>
+    <div class="test-grid">
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Wreszcie moje Instagram żyje bez tego, że muszę siedzieć godzinami wymyślając posty. Są lepsze niż robiłam sama."</p><div class="test-author"><div class="t-avatar">👩</div><div><div class="t-name">Karolina W.</div><div class="t-role">Studio Urody, Warszawa</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Miałam obawy czy AI napisze naturalnie — ale posty brzmią dokładnie jak mój salon. Klientki pytają kto to robi."</p><div class="test-author"><div class="t-avatar">💆</div><div><div class="t-name">Magda K.</div><div class="t-role">Gabinet Kosmetyczny, Kraków</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"299 złotych za 12 postów z grafikami? Copywriter brałby za to 10 razy więcej. Polecam każdej właścicielce salonu."</p><div class="test-author"><div class="t-avatar">💅</div><div><div class="t-name">Ania P.</div><div class="t-role">Salon Paznokci, Wrocław</div></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq">
-  <div class="section-label">FAQ</div>
-  <h2 style="text-align:center;font-size:clamp(24px,3vw,36px);font-weight:800;margin-bottom:36px">Najczęstsze pytania</h2>
+<section class="faq-section">
+  <div class="faq-head reveal"><div class="s-label center">FAQ</div><h2 class="s-h2">Najczęstsze pytania</h2></div>
+  <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Czy muszę mieć duże konto na Instagramie?<span class="faq-icon">+</span></div><div class="faq-a">Nie — pracujemy z salonami na każdym etapie, od zera. Regularny, profesjonalny content to najlepsza metoda na organiczny wzrost obserwujących.</div></div>
+  <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Jak działają 14 dni bezpłatnie?<span class="faq-icon">+</span></div><div class="faq-a">Podajesz kartę przy rejestracji, ale nie pobieramy żadnej opłaty przez pierwsze 14 dni. Możesz anulować w każdej chwili przed upływem okresu próbnego — nic nie zapłacisz.</div></div>
+  <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Kto zatwierdza posty przed publikacją?<span class="faq-icon">+</span></div><div class="faq-a">Ty. Każdy post trafia najpierw do Ciebie. Akceptujesz lub prosisz o zmiany. Nic nie jest publikowane bez Twojej zgody.</div></div>
+  <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Co jeśli posty mi się nie spodobają?<span class="faq-icon">+</span></div><div class="faq-a">Poprawiamy do skutku. A jeśli po 14 dniach próbnych uznasz że to nie dla Ciebie — po prostu anulujesz. Zero opłat, zero zobowiązań.</div></div>
+  <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Czy pracujecie tylko z Warszawą?<span class="faq-icon">+</span></div><div class="faq-a">Pracujemy z salonami z całej Polski — wszystko odbywa się zdalnie przez email i platformę online.</div></div>
+</section>
 
-  <div class="faq-item">
-    <div class="faq-q">Czy muszę mieć duże konto na Instagramie?</div>
-    <div class="faq-a">Nie — pracujemy z salonami na każdym etapie, od 0 obserwujących wzwyż. Regularny content to podstawa budowania zasięgu organicznego.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">Kto zatwierdza posty przed publikacją?</div>
-    <div class="faq-a">Ty. Każdy post trafia do Ciebie do akceptacji. Możesz poprosić o zmiany lub zatwierdzić od razu. Nic nie jest publikowane bez Twojej zgody.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">Jak długo trwa 14 dni bezpłatnego okresu?</div>
-    <div class="faq-a">Dokładnie 14 dni od rejestracji. Po tym czasie automatycznie zaczynamy pobierać 299 PLN miesięcznie. Możesz anulować w każdej chwili przed upływem okresu próbnego.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">Co jeśli posty mi się nie spodobają?</div>
-    <div class="faq-a">Poprawiamy do skutku — korekty są w cenie. A jeśli po 14 dniach próbnych uznasz że to nie dla Ciebie, po prostu anulujesz i nie płacisz nic.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">Czy pracujecie tylko z Warszawą?</div>
-    <div class="faq-a">Pracujemy z salonami z całej Polski — wszystko odbywa się zdalnie przez email i platformę online.</div>
+<!-- FINAL -->
+<section class="final">
+  <div class="final-inner reveal">
+    <h2>Gotowa na salon<br>który <em>błyszczy</em><br>w social media?</h2>
+    <p class="final-sub">Dołącz do salonów które przestały się martwić o content i zaczęły go uwielbiać.</p>
+    <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00" class="final-btn">Zacznij 14 dni bezpłatnie →</a>
+    <p class="final-note">Bez umów · Anuluj kiedy chcesz · 299 PLN / miesiąc po próbie</p>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <h2>Gotowa na profesjonalne<br>social media salonu?</h2>
-  <p>Dołącz do salonów które przestały się martwić o content.</p>
-  <a href="https://buy.stripe.com/test_14A3cof5T5YmfDq25L8ww00">Zacznij 14 dni bezpłatnie →</a>
-  <p class="final-sub">Bez umów · Anuluj kiedy chcesz · 299 PLN/mies po próbie</p>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p style="margin-bottom:8px">
-    <a href="/cdn-cgi/l/email-protection#650e0a0b11040e112502090a1210150800010c044b1509"><span class="__cf_email__" data-cfemail="43282c2d3722283703242f2c3436332e26272a226d332f">[email&#160;protected]</span></a>
-    <a href="
+  <div class="f-logo">GlowUp Media</div>
+  <div class="f-links">
+    <a href="mailto:kontakt@glowupmedia.pl">kontakt@glowupmedia.pl</a>
+    <a href="#">Polityka prywatności</a>
+    <a href="#">Regulamin</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAQ
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+
+// Podmień emoji na zdjęcia z Leonardo gdy będziesz gotowa:
+// Wgraj zdjęcia do folderu /images/ w repo GitHub
+// Następnie zamień np.:
+// <div class="mosaic-cell span2">🌸</div>
+// na:
+// <div class="mosaic-cell span2"><img src="images/salon1.jpg" alt=""></div>
+</script>
+</body>
+</html>
