@@ -397,37 +397,28 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
 
 <script>
 window.onload = function() {
-    // Ścieżka do folderu (pamiętaj o %20 zamiast spacji w nazwie)
     const repoPath = "https://raw.githubusercontent.com/smg-media/glowupmedia/main/Beauty%20AI%20images/";
     
-    // Znajdujemy wszystkie miejsca na zdjęcia na stronie
-    const targets = document.querySelectorAll('.mosaic-cell, .g-img, .post-img, .t-avatar');
-    
-    targets.forEach((el, index) => {
-        // Losujemy numer od 1 do 20
+    // 1. Obsługa mozaiki w Hero i Galerii (tam gdzie nie ma ważnych tekstów)
+    document.querySelectorAll('.mosaic-cell, .g-img').forEach((el, index) => {
         const randomNum = Math.floor(Math.random() * 20) + 1;
-        const imgUrl = repoPath + randomNum + ".jpg";
-        
-        // Tworzymy i wstawiamy zdjęcie
-        const img = new Image();
-        img.src = imgUrl;
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        
-        // Specjalne zaokrąglenie dla avatarów w opiniach
-        if(el.classList.contains('t-avatar')) {
-            img.style.borderRadius = "50%";
-        }
+        el.innerHTML = `<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;">`;
+        if(el.classList.contains('g-img')) el.style.background = "none";
+    });
 
-        // Czyścimy stare emoji i wstawiamy nowe zdjęcie
-        el.innerHTML = '';
-        el.appendChild(img);
+    // 2. Obsługa kart POSTÓW (zachowujemy badge "Instagram/Facebook")
+    document.querySelectorAll('.post-img').forEach((el) => {
+        const randomNum = Math.floor(Math.random() * 20) + 1;
+        const badge = el.querySelector('.platform-badge');
+        const badgeHTML = badge ? badge.outerHTML : ''; // Kopiujemy badge jeśli istnieje
         
-        // Usuwamy tło z galerii, żeby nie prześwitywało pod zdjęciem
-        if(el.classList.contains('g-img')) {
-            el.style.background = "none";
-        }
+        el.innerHTML = `${badgeHTML}<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;">`;
+    });
+
+    // 3. Obsługa AVATARÓW (zachowujemy strukturę)
+    document.querySelectorAll('.t-avatar').forEach((el) => {
+        const randomNum = Math.floor(Math.random() * 20) + 1;
+        el.innerHTML = `<img src="${repoPath}${randomNum}.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
     });
 };
 </script> </body>
