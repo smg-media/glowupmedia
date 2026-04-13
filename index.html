@@ -396,65 +396,35 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
 </footer>
 
 <script>
-// Nav scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
-});
-
-// Scroll reveal
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
-  });
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// FAQ
-function toggleFaq(el){el.parentElement.classList.toggle('open')}
-
-// Podmień emoji na zdjęcia z Leonardo gdy będziesz gotowa:
-// Wgraj zdjęcia do folderu /images/ w repo GitHub
-// Następnie zamień np.:
-// <div class="mosaic-cell span2">🌸</div>
-// na:
-// <div class="mosaic-cell span2"><img src="images/salon1.jpg" alt=""></div>
-</script>
-<script>
 window.onload = function() {
-    // Ścieżka dokładnie do tego folderu, który masz teraz na GitHub
+    // Ścieżka do folderu (pamiętaj o %20 zamiast spacji w nazwie)
     const repoPath = "https://raw.githubusercontent.com/smg-media/glowupmedia/main/Beauty%20AI%20images/";
     
-    // Lista nazw Twoich plików z Leonardo (skopiowałem początek nazwy ze zdjęcia)
-    // Jeśli masz ich więcej, skrypt będzie je zapętlać
-    const myFiles = [
-        'Leonardo_Lightning_XL_Ultraluxury_beauty_salon_interior_in_cl_0.jpg',
-        'Leonardo_Lightning_XL_Ultraluxury_beauty_salon_interior_in_cl_1.jpg',
-        'Leonardo_Lightning_XL_Ultraluxury_beauty_salon_interior_in_cl_2.jpg',
-        'Leonardo_Lightning_XL_Ultraluxury_beauty_salon_interior_in_cl_3.jpg'
-    ];
-
+    // Znajdujemy wszystkie miejsca na zdjęcia na stronie
     const targets = document.querySelectorAll('.mosaic-cell, .g-img, .post-img, .t-avatar');
     
     targets.forEach((el, index) => {
-        // Wybieramy plik z listy (jeśli zdjęć jest mniej niż pól, zacznie od nowa)
-        const fileName = myFiles[index % myFiles.length];
-        const imgUrl = repoPath + fileName;
+        // Losujemy numer od 1 do 20
+        const randomNum = Math.floor(Math.random() * 20) + 1;
+        const imgUrl = repoPath + randomNum + ".jpg";
         
-        // Tworzymy element zdjęcia
+        // Tworzymy i wstawiamy zdjęcie
         const img = new Image();
         img.src = imgUrl;
         img.style.width = "100%";
         img.style.height = "100%";
         img.style.objectFit = "cover";
         
+        // Specjalne zaokrąglenie dla avatarów w opiniach
         if(el.classList.contains('t-avatar')) {
             img.style.borderRadius = "50%";
         }
 
-        // Czyścimy emoji i wstawiamy zdjęcie
+        // Czyścimy stare emoji i wstawiamy nowe zdjęcie
         el.innerHTML = '';
         el.appendChild(img);
         
+        // Usuwamy tło z galerii, żeby nie prześwitywało pod zdjęciem
         if(el.classList.contains('g-img')) {
             el.style.background = "none";
         }
