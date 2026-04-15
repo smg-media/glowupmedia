@@ -494,7 +494,7 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 function toggleFaq(el){el.parentElement.classList.toggle('open');}
 
 (function(){
-var PREVIEW_API="https://glowupmedia.pl";
+var PREVIEW_API="https://beauty-ai-server.onrender.com";
 var params=new URLSearchParams(window.location.search);
 var r=params.get("r");
 if(!r||!/^rec[A-Za-z0-9]+/.test(r))return;
