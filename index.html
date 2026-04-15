@@ -210,6 +210,20 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
 </head>
 <body>
 
+<section id="lead-preview" style="display:none;background:#faf7f3;padding:60px 20px 40px;text-align:center">
+  <div style="max-width:620px;margin:0 auto">
+    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:12px">Przygotowane specjalnie dla Ciebie</div>
+    <div style="font-size:28px;font-family:'Cormorant Garamond',serif;font-weight:300;color:#2a1a2e;margin-bottom:4px">Post na Instagram dla</div>
+    <div id="lp-name" style="font-size:32px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#c9a96e;margin-bottom:28px"></div>
+    <div id="lp-img-wrap" style="display:none;margin-bottom:24px"><img id="lp-image" style="width:100%;max-width:480px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12)" alt="Grafika AI"></div>
+    <div style="background:#fff;border-radius:16px;padding:28px;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,.06);margin-bottom:28px">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c9a96e;font-weight:700;margin-bottom:12px">Treść posta — gotowa do publikacji</div>
+      <div id="lp-post-text" style="font-size:14px;line-height:1.85;color:#555;white-space:pre-wrap"></div>
+    </div>
+    <a href="#cennik" style="display:inline-block;background:linear-gradient(135deg,#c9a96e,#b8935a);color:#fff;text-decoration:none;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:500">Chcę takie posty dla swojego salonu</a>
+  </div>
+</section>
+
 <nav id="nav">
   <div class="logo">Glow<em>Up</em> Media</div>
   <div class="nav-links">
@@ -465,6 +479,22 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 
 // ── FAQ toggle ───────────────────────────────────────────
 function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+// ── Lead preview ─────────────────────────────────────────
+(function(){
+  var PREVIEW_API='https://beauty-ai-server.onrender.com';
+  var params=new URLSearchParams(window.location.search);
+  var r=params.get('r');
+  if(!r||!/^rec[A-Za-z0-9]+/.test(r))return;
+  fetch(PREVIEW_API+'/api/lead-preview?r='+encodeURIComponent(r))
+    .then(function(res){return res.ok?res.json():Promise.reject();})
+    .then(function(d){
+      document.getElementById('lp-name').textContent=d.salon_name||'';
+      document.getElementById('lp-post-text').textContent=d.generated_sample||'';
+      if(d.image_url){document.getElementById('lp-image').src=d.image_url;document.getElementById('lp-img-wrap').style.display='block';}
+      document.getElementById('lead-preview').style.display='block';
+    }).catch(function(){});
+})();
 </script>
 </body>
 </html>
