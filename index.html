@@ -215,9 +215,139 @@ footer{background:#0f0a0e;padding:36px 60px;display:flex;justify-content:space-b
   .price-card{padding:36px 24px}
   footer{padding:24px 20px;flex-direction:column;text-align:center}
 }
+/* ── Brief form & upsell ─────────────────────────── */
+#brief-section,#brief-success{display:none;background:#faf7f3;padding:60px 20px 48px}
+.bf-wrap{max-width:560px;margin:0 auto}
+.bf-label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8a8a8a;font-weight:600;margin-bottom:6px}
+.bf-input,.bf-select,.bf-textarea{width:100%;border:1px solid #e8e0d8;border-radius:12px;padding:12px 16px;font-size:14px;color:#2a1a2e;background:#fff;font-family:'Inter',sans-serif;outline:none;transition:border .2s;box-sizing:border-box}
+.bf-input:focus,.bf-select:focus,.bf-textarea:focus{border-color:#c9a96e}
+.bf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bf-submit{width:100%;padding:16px;background:linear-gradient(135deg,#c9847a,#a0665f);color:#fdf8f4;border:none;border-radius:50px;font-size:15px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:all .3s}
+.bf-submit:hover{opacity:.9;transform:translateY(-1px)}
+.bf-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.us-header{background:linear-gradient(135deg,#c9847a,#9d5f58);color:#fdf8f4;padding:20px 28px;text-align:center;border-radius:16px 16px 0 0}
+.us-body{background:#fff;padding:28px;border-radius:0 0 16px 16px;border:2px solid #c9847a;border-top:none}
+.us-countdown{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;letter-spacing:.05em;color:#c9847a}
+.us-cta{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#c9847a,#9d5f58);color:#fdf8f4;text-decoration:none;border-radius:50px;font-size:15px;font-weight:500;text-align:center;transition:all .3s}
+.us-cta:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:640px){.bf-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<!-- BRIEF FORM -->
+<section id="brief-section" style="display:none;background:#faf7f3;padding:60px 20px 48px">
+  <div class="bf-wrap">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:10px">Ostatni krok</div>
+      <div style="font-size:30px;font-family:'Cormorant Garamond',serif;font-weight:300;color:#2a1a2e;margin-bottom:8px">Powiedz nam o swoim salonie</div>
+      <p style="font-size:13px;color:#8a8a8a;line-height:1.7">Na tej podstawie AI wygeneruje 12 spersonalizowanych postów dla Twojego salonu.</p>
+    </div>
+    <form id="brief-form" style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.07)">
+      <div style="margin-bottom:18px">
+        <label class="bf-label">Nazwa salonu *</label>
+        <input class="bf-input" id="bf-salon" required placeholder="np. Salon Urody Magda">
+      </div>
+      <div class="bf-grid" style="margin-bottom:18px">
+        <div>
+          <label class="bf-label">Miasto</label>
+          <input class="bf-input" id="bf-miasto" placeholder="np. Warszawa">
+        </div>
+        <div>
+          <label class="bf-label">Email do wysyłki *</label>
+          <input class="bf-input" id="bf-email" type="email" required placeholder="twoj@email.pl">
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="bf-label">Typ salonu</label>
+        <select class="bf-select" id="bf-typ">
+          <option value="">Wybierz...</option>
+          <option>Salon paznokci</option>
+          <option>Salon rzęs i brwi</option>
+          <option>Salon beauty (kompleksowy)</option>
+          <option>Gabinet kosmetyczny</option>
+          <option>Salon fryzjerski</option>
+          <option>Spa / masaż</option>
+          <option>Salon tatuażu / PMU</option>
+        </select>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="bf-label">Top usługi (które chcesz promować)</label>
+        <input class="bf-input" id="bf-uslugi" placeholder="np. manicure hybrydowy, rzęsy 1:1">
+      </div>
+      <div class="bf-grid" style="margin-bottom:18px">
+        <div>
+          <label class="bf-label">Ton komunikacji</label>
+          <select class="bf-select" id="bf-ton">
+            <option>profesjonalny i ciepły</option>
+            <option>przyjacielski i luźny</option>
+            <option>elegancki i ekskluzywny</option>
+            <option>motywujący i energiczny</option>
+          </select>
+        </div>
+        <div>
+          <label class="bf-label">Zwrot do klientki</label>
+          <select class="bf-select" id="bf-zwrot">
+            <option>Ty</option>
+            <option>Pani</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="bf-label">Czego unikać w postach?</label>
+        <input class="bf-input" id="bf-nie" placeholder="np. nie porównywać z konkurencją">
+      </div>
+      <div style="margin-bottom:28px">
+        <label class="bf-label">Coś dodatkowego o salonie?</label>
+        <textarea class="bf-input bf-textarea" id="bf-extra" rows="3" placeholder="np. działamy 7 lat, specjalizujemy się w..."></textarea>
+      </div>
+      <div id="bf-error" style="display:none;color:#c0392b;font-size:13px;text-align:center;margin-bottom:16px">Coś poszło nie tak — spróbuj ponownie.</div>
+      <button type="submit" class="bf-submit" id="bf-btn">Wyślij brief →</button>
+    </form>
+  </div>
+</section>
+
+<!-- BRIEF SUCCESS + UPSELL -->
+<section id="brief-success" style="display:none;background:#faf7f3;padding:60px 20px 64px">
+  <div class="bf-wrap">
+    <!-- Potwierdzenie -->
+    <div style="background:#fff;border-radius:20px;padding:36px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.07);margin-bottom:24px">
+      <div style="font-size:48px;margin-bottom:14px">✨</div>
+      <div style="font-size:26px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#2a1a2e;margin-bottom:10px">Brief wysłany!</div>
+      <p style="font-size:14px;color:#8a8a8a;line-height:1.7">Generujemy Twoje 12 postów wraz z grafikami.<br>Wyślemy je na <strong id="bs-email"></strong> w ciągu kilku minut.</p>
+    </div>
+    <!-- Upsell Pipeline3 -->
+    <div id="us-card" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(201,132,122,.25)">
+      <div class="us-header">
+        <div id="us-active">
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-bottom:6px">Oferta ograniczona czasowo</div>
+          <div style="font-size:13px;opacity:.9;margin-bottom:4px">Zostało:</div>
+          <div class="us-countdown" id="us-timer">15:00</div>
+        </div>
+        <div id="us-expired" style="display:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Oferta wygasła</div>
+      </div>
+      <div class="us-body">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#c9847a;font-weight:700;margin-bottom:10px">Tylko teraz · jednorazowo</div>
+        <div style="font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#2a1a2e;margin-bottom:16px;line-height:1.35">Dodaj do pakietu <span style="color:#c9847a">12 szablonów Stories</span> i <span style="color:#c9847a">12 okładek postów</span></div>
+        <ul style="list-style:none;padding:0;margin:0 0 20px;font-size:13px;color:#555">
+          <li style="padding:7px 0;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;gap:10px"><span style="color:#c9847a;font-weight:700">✓</span> 12 gotowych szablonów Instagram Stories</li>
+          <li style="padding:7px 0;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;gap:10px"><span style="color:#c9847a;font-weight:700">✓</span> 12 okładek postów dopasowanych do salonu</li>
+          <li style="padding:7px 0;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;gap:10px"><span style="color:#c9847a;font-weight:700">✓</span> Spójny styl wizualny z Twoją marką</li>
+          <li style="padding:7px 0;display:flex;align-items:center;gap:10px"><span style="color:#c9847a;font-weight:700">✓</span> Gotowe do pobrania w ciągu 24h</li>
+        </ul>
+        <div style="display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:20px">
+          <span style="font-size:15px;color:#aaa;text-decoration:line-through">49,99 zł</span>
+          <span style="font-size:40px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#2a1a2e">19,99 zł</span>
+        </div>
+        <div id="us-cta-wrap">
+          <a href="https://buy.stripe.com/test_bJe8wIf5T2Maaj69yd8ww02" class="us-cta">Tak, chcę szablony za 19,99 zł →</a>
+        </div>
+        <div id="us-expired-msg" style="display:none;text-align:center;font-size:13px;color:#aaa">Ta oferta już nie obowiązuje.</div>
+        <p style="text-align:center;font-size:12px;color:#aaa;margin-top:12px">Płatność jednorazowa · bez subskrypcji</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="lead-preview" style="display:none;background:#faf7f3;padding:60px 20px 40px;text-align:center">
   <div style="max-width:620px;margin:0 auto">
@@ -489,13 +619,67 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 // ── FAQ toggle ───────────────────────────────────────────
 function toggleFaq(el){el.parentElement.classList.toggle('open');}
 
-// ── Lead preview ─────────────────────────────────────────
+// ── Lead preview + Brief + Upsell ────────────────────────
 (function(){
-  var PREVIEW_API='https://beauty-ai-server.onrender.com';
+  var API='https://beauty-ai-server.onrender.com';
   var params=new URLSearchParams(window.location.search);
   var r=params.get('r');
+  var brief=params.get('brief');
+
   if(!r||!/^rec[A-Za-z0-9]+/.test(r))return;
-  fetch(PREVIEW_API+'/api/lead-preview?r='+encodeURIComponent(r))
+
+  // brief=1 → pokaż formularz briefu (po płatności)
+  if(brief==='1'){
+    fetch(API+'/api/lead-preview?r='+encodeURIComponent(r))
+      .then(function(res){return res.ok?res.json():Promise.reject();})
+      .then(function(d){
+        if(d.salon_name) document.getElementById('bf-salon').value=d.salon_name;
+        if(d.city)       document.getElementById('bf-miasto').value=d.city;
+        if(d.email)      document.getElementById('bf-email').value=d.email;
+      }).catch(function(){});
+    document.getElementById('brief-section').style.display='block';
+    window.scrollTo(0,0);
+
+    // obsługa formularza
+    document.getElementById('brief-form').addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=document.getElementById('bf-btn');
+      btn.disabled=true; btn.textContent='Wysyłam...';
+      document.getElementById('bf-error').style.display='none';
+      var email=document.getElementById('bf-email').value;
+      fetch(API+'/api/brief',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          record_id:r,
+          salon_name:document.getElementById('bf-salon').value,
+          miasto:document.getElementById('bf-miasto').value,
+          email:email,
+          typ_salonu:document.getElementById('bf-typ').value,
+          top_uslugi:document.getElementById('bf-uslugi').value,
+          ton:document.getElementById('bf-ton').value,
+          zwrot:document.getElementById('bf-zwrot').value,
+          czego_nie:document.getElementById('bf-nie').value,
+          dodatkowe:document.getElementById('bf-extra').value
+        })
+      }).then(function(res){
+        if(!res.ok) throw new Error();
+        // pokaż sukces + upsell
+        document.getElementById('brief-section').style.display='none';
+        document.getElementById('bs-email').textContent=email;
+        document.getElementById('brief-success').style.display='block';
+        window.scrollTo(0,0);
+        startUpsellCountdown();
+      }).catch(function(){
+        btn.disabled=false; btn.textContent='Wyślij brief →';
+        document.getElementById('bf-error').style.display='block';
+      });
+    });
+    return;
+  }
+
+  // brak brief=1 → pokaż lead preview (wygenerowany post)
+  fetch(API+'/api/lead-preview?r='+encodeURIComponent(r))
     .then(function(res){return res.ok?res.json():Promise.reject();})
     .then(function(d){
       document.getElementById('lp-name').textContent=d.salon_name||'';
@@ -504,6 +688,28 @@ function toggleFaq(el){el.parentElement.classList.toggle('open');}
       document.getElementById('lead-preview').style.display='block';
     }).catch(function(){});
 })();
+
+// ── Upsell countdown ─────────────────────────────────────
+function startUpsellCountdown(){
+  var total=15*60;
+  var timer=document.getElementById('us-timer');
+  var interval=setInterval(function(){
+    total--;
+    if(total<=0){
+      clearInterval(interval);
+      document.getElementById('us-active').style.display='none';
+      document.getElementById('us-expired').style.display='block';
+      document.getElementById('us-cta-wrap').style.display='none';
+      document.getElementById('us-expired-msg').style.display='block';
+      document.getElementById('us-card').style.border='2px solid #ddd';
+      document.getElementById('us-card').style.opacity='.6';
+      return;
+    }
+    var m=String(Math.floor(total/60)).padStart(2,'0');
+    var s=String(total%60).padStart(2,'0');
+    timer.textContent=m+':'+s;
+  },1000);
+}
 </script>
 </body>
 </html>
